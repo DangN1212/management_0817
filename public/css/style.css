@@ -1,0 +1,61 @@
+h4 {
+    color: #26a69a;
+    font-weight: bold;
+}
+
+.text_b {
+    font-weight: bold;
+}
+
+.index .row {
+    padding: 50px 0;
+}
+
+.index .col {
+    border-right: 1px solid #fff
+}
+
+.index .col>* {
+    height: 90px;
+    text-align: center;
+}
+
+.dateLabel {
+    display: block;
+}
+
+.text_title span {
+    display: block;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+#tabs-swipe-data a {
+    color: #26a69a
+}
+
+.tabs .indicator {
+    background: #26a69a
+}
+
+.box-data .row {
+    margin-bottom: 10px;
+    border-bottom: 1px dotted #000
+}
+
+.box-data .col {
+    margin: 3px 0 10px;
+}
+
+.container *[id*=data-swipe] {
+    height: auto;
+}
+
+.container *[id*=data-box] {
+    height: auto;
+}
+
+.tabs {
+    margin-bottom: 20px;
+}
