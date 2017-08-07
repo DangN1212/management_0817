@@ -22,3 +22,14 @@ function user_checkInputInsertData($userData)
 	// }
 	return $error;
 }
+
+function user_login($userInfo){
+	if (!$userInfo) {
+		return false;
+	}
+	$_SESSION["userData"] = array(
+		"id" => $userInfo->id,
+		"type" => $userInfo->type,
+		);
+	return true;
+}

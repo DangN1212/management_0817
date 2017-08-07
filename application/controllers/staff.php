@@ -3,9 +3,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Staff extends CI_Controller {
 
+	function __construct()
+	{
+		parent::__construct();
+
+		$userType = $_SESSION["userData"]["type"];
+
+		if (!$userType) {
+			redirect(base_url());
+		}
+
+		$this->userID = $_SESSION["userData"]["id"];
+	}
+
 	public function index()
 	{
-
+		echo "Staff Index";
 	}
 
 	public function add_income()
@@ -24,12 +37,12 @@ class Staff extends CI_Controller {
 				$data["error"] = $error;
 				$data["params"] = $params;
 			} else {
-				$params["user"] = 9;
+				$params["user"] = $this->userID;
 				$params["activity_type"] = 1;
 
 				$this->load->model('bill_model', 'mdlBill');
 				$this->mdlBill->insertBill($params);
-				redirect(base_url("staff"),'refresh');
+				redirect(base_url("/staff/list_income"),'refresh');
 			}
 		}
 
@@ -53,12 +66,12 @@ class Staff extends CI_Controller {
 				$data["error"] = $error;
 				$data["params"] = $params;
 			} else {
-				$params["user"] = 9;
+				$params["user"] = $this->userID;
 				$params["activity_type"] = 2;
 
 				$this->load->model('bill_model', 'mdlBill');
 				$this->mdlBill->insertBill($params);
-				redirect(base_url("staff"),'refresh');
+				redirect(base_url("/staff/list_outcome"),'refresh');
 			}
 		}
 
@@ -73,8 +86,8 @@ class Staff extends CI_Controller {
 		$to = $params["to"];
 
 		$this->load->model('bill_model', "mdlBill");
-		$listBill = $this->mdlBill->getAllBillByUser(9, 1, $from, $to);
-		$listAllBill = $this->mdlBill->getAllBillByUser(9, 1);
+		$listBill = $this->mdlBill->getAllBillByUser($this->userID, 1, $from, $to);
+		$listAllBill = $this->mdlBill->getAllBillByUser($this->userID, 1);
 
 		$data["listAllBill"] = $listAllBill;
 		$data["listBill"] = $listBill;
@@ -92,8 +105,8 @@ class Staff extends CI_Controller {
 		$to = $params["to"];
 
 		$this->load->model('bill_model', "mdlBill");
-		$listBill = $this->mdlBill->getAllBillByUser(9, 2, $from, $to);
-		$listAllBill = $this->mdlBill->getAllBillByUser(9, 2);
+		$listBill = $this->mdlBill->getAllBillByUser($this->userID, 2, $from, $to);
+		$listAllBill = $this->mdlBill->getAllBillByUser($this->userID, 2);
 
 		$data["listAllBill"] = $listAllBill;
 		$data["listBill"] = $listBill;

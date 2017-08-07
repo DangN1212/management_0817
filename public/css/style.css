@@ -3,6 +3,10 @@ h4 {
     font-weight: bold;
 }
 
+.material-icons.prefix {
+    margin-top: 10px;
+}
+
 .text_b {
     font-weight: bold;
 }
@@ -58,4 +62,19 @@ h4 {
 
 .tabs {
     margin-bottom: 20px;
+}
+
+.logout-btn {
+    right: 70px;
+}
+
+.text-btn {
+    display: inline-block;
+}
+
+.select-02 {
+    margin-top: 10px;
+}
+.box-login{
+    padding: 20px!important;
 }

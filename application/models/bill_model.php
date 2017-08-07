@@ -54,6 +54,13 @@ class Bill_model extends CI_Model {
 		$this->db->insert($this->table, $data);
 	}
 
+	public function getSumValue($activity_type) {
+		$this->db->select('sum(value) as total');
+		$this->db->where('activity_type = ', $activity_type);
+		$query = $this->db->get($this->table);
+		return $query->row();
+	}
+
 }
 
 /* End of file bill_model.php */
