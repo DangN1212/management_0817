@@ -19,7 +19,7 @@ class Bill_model extends CI_Model {
 
 	public function getAllBillByUser($userID, $type, $from = null, $to = null)
 	{
-		$this->db->select('bill.*, bill_type.name as bill_type_name, bill_type.description as bill_type_description');
+		$this->db->select('bill.*, bill_type.name as bill_type_name, bill_type.description as bill_type_description, bill_type_2.name as bill_type_2_name, bill_type_2.description as bill_type_2_description');
 		$this->db->where('user = ', $userID);
 		$this->db->where('bill.activity_type = ', $type);
 		if ($from) {
@@ -28,7 +28,8 @@ class Bill_model extends CI_Model {
 		if ($to) {
 			$this->db->where('dateInput <= ', $to);
 		}
-		$this->db->join('bill_type', 'bill.bill_type = bill_type.pk');
+		$this->db->join('bill_type', 'bill.bill_type = bill_type.pk', 'left');
+		$this->db->join('bill_type_2', 'bill.bill_type_2 = bill_type_2.pk', 'left');
 		$this->db->order_by('dateInput', 'desc');
 		$query = $this->db->get($this->table);
 		return $query->result();
@@ -51,6 +52,9 @@ class Bill_model extends CI_Model {
 			"description" => $billData["description"],
 			"value" => $billData["value"],
 			);
+		if ($billData["bill_type_2"]) {
+			$data["bill_type_2"] = $billData["bill_type_2"];
+		}
 		$this->db->insert($this->table, $data);
 	}
 

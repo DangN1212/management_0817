@@ -25,7 +25,7 @@
                         ?>
                         <div class="row">
                             <p class="col s2"><?= $value->dateInput ?></p>
-                            <p title="<?= $value->bill_type_description ?>" class="col s2"><?= $value->bill_type_name ?></p>
+                            <p title="<?= $value->bill_type_description ?><?php echo ($value->bill_type_2_description) ? " | ".$value->bill_type_2_description : "" ?>" class="col s2"><?= $value->bill_type_name ?><?php echo ($value->bill_type_2_name) ? " | ".$value->bill_type_2_name : "" ?></p>
                             <p class="col s6"><?= $value->description ?></p>
                             <p class="col s2"><?= $value->value ?></p>
                         </div>
@@ -74,7 +74,7 @@
                         ?>
                     <div class="row">
                         <p class="col s2"><?= $value->dateInput ?></p>
-                        <p title="<?= $value->bill_type_description ?>" class="col s2"><?= $value->bill_type_name ?></p>
+                        <p title="<?= $value->bill_type_description ?><?php echo ($value->bill_type_2_description) ? " | ".$value->bill_type_2_description : "" ?>" class="col s2"><?= $value->bill_type_name ?><?php echo ($value->bill_type_2_name) ? " | ".$value->bill_type_2_name : "" ?></p>
                         <p class="col s6"><?= $value->description ?></p>
                         <p class="col s2"><?= $value->value ?></p>
                     </div>

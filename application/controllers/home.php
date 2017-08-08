@@ -72,6 +72,13 @@ class Home extends CI_Controller {
 
 	}
 
+	public function ajax_getBillType2($billType){
+		$this->load->model('bill_type_2_model', "mdlBillType2");
+		$result = $this->mdlBillType2->getAllBillType2ByBillType($billType);
+		header('Content-Type: application/json');
+		echo json_encode($result);
+	}
+
 }
 
 /* End of file index.php */

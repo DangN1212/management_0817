@@ -1,3 +1,6 @@
+<h1>Đây là trang thống kê nhưng chưa có giao diện</h1>
+<a href="<?= base_url() ?>admin/create_staff/" title="">Add staff</a><br>
+<a href="<?= base_url() ?>admin/invest" title="">List invest</a><br>
 <div class="index container">
     <div class="row blue lighten-5">
         <div class="col s3">

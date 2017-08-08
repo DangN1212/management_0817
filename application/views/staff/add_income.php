@@ -24,6 +24,10 @@
                     ?>
                 </select>
                 <label id="lb_bill_type">Loại hóa đơn</label>
+                <div id="bill_type_2_content" style="display: none" class="col push-s2 s10">
+                    <select id="bill_type_2" name="bill_type_2" class="select-02">
+                    </select>
+                </div>
             </div>
           </div>
           <div class="row">
@@ -78,5 +82,31 @@
             }
        }
        ?>
+       billTypeSelector = $("#bill_type");
+       billTypeSelector.on('change', function(event) {
+         event.preventDefault();
+         /* Act on the event */
+         $.ajax({
+           url: '<?= base_url() ?>/home/ajax_getBillType2/'+billTypeSelector.val(),
+           type: 'GET',
+           dataType: 'json',
+           success:function(data){
+            if (data.length > 0) {
+              optionData = '<option value="" disabled selected>Chọn loại hóa đơn</option>';
+              for (var i = 0; i < data.length; i++) {
+                optionData += '<option value="'+data[i].pk+'">'+data[i].name+'</option>';
+              }
+              console.log(optionData);
+              $("#bill_type_2").html(optionData);
+              $("#bill_type_2").material_select();
+              $("#bill_type_2_content").show();
+            } else {
+              $("#bill_type_2").html("");
+              $("#bill_type_2").material_select();
+              $("#bill_type_2_content").hide();
+            }
+           }
+         });
+       });
     });
 </script>

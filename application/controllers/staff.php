@@ -18,7 +18,8 @@ class Staff extends CI_Controller {
 
 	public function index()
 	{
-		echo "Staff Index";
+		$data["mainContent"] = "staff/index";
+		$this->load->view('templates/main', $data, false);
 	}
 
 	public function add_income()

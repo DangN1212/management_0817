@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 07, 2017 at 10:20 PM
+-- Generation Time: Aug 08, 2017 at 09:52 PM
 -- Server version: 5.7.19-0ubuntu0.16.04.1
 -- PHP Version: 5.6.30-10+deb.sury.org~xenial+2
 
@@ -31,6 +31,7 @@ CREATE TABLE `bill` (
   `user` int(11) NOT NULL,
   `dateInput` date NOT NULL,
   `bill_type` int(11) DEFAULT NULL,
+  `bill_type_2` int(11) DEFAULT NULL,
   `activity_type` int(11) NOT NULL COMMENT '1: income; 2: outcome; 3: investment amount',
   `description` text NOT NULL,
   `value` bigint(20) NOT NULL,
@@ -41,15 +42,18 @@ CREATE TABLE `bill` (
 -- Dumping data for table `bill`
 --
 
-INSERT INTO `bill` (`pk`, `user`, `dateInput`, `bill_type`, `activity_type`, `description`, `value`, `registration_date`) VALUES
-(4, 9, '2018-11-11', 2, 1, 'Consequuntur earum qui sint dolore nulla omnis rerum minus quasi quae dolorem rerum tenetur quia sunt laboriosam voluptate sed', 5, '2017-08-06 17:58:05'),
-(5, 9, '1995-11-11', 2, 1, 'Aut ab eu minima sint earum architecto iure ad quod velit quas consequat Commodi culpa sint', 24, '2017-08-06 17:58:47'),
-(6, 9, '1999-11-11', 4, 2, 'Consectetur non eu fugiat veritatis accusamus est lorem commodo neque earum fugiat doloremque accusantium et repellendus Eius omnis officia', 86, '2017-08-06 18:01:32'),
-(7, 9, '1995-11-11', 3, 2, 'Rem ab voluptas qui anim ut quae laborum Fugiat', 72, '2017-08-06 18:01:54'),
-(8, 8, '1999-11-11', 5, 3, 'Consectetur non eu fugiat veritatis accusamus est lorem commodo neque earum fugiat doloremque accusantium et repellendus Eius omnis officia', 86, '2017-08-06 18:01:32'),
-(9, 8, '1995-11-11', 5, 3, 'Rem ab voluptas qui anim ut quae laborum Fugiat', 72, '2017-08-06 18:01:54'),
-(10, 8, '1995-11-11', 5, 3, 'Elmo Carver', 1111, '2017-08-07 22:04:41'),
-(11, 8, '2016-11-11', 5, 3, 'ád', 123123123123, '2017-08-07 22:05:02');
+INSERT INTO `bill` (`pk`, `user`, `dateInput`, `bill_type`, `bill_type_2`, `activity_type`, `description`, `value`, `registration_date`) VALUES
+(4, 9, '2018-11-11', 2, 0, 1, 'Consequuntur earum qui sint dolore nulla omnis rerum minus quasi quae dolorem rerum tenetur quia sunt laboriosam voluptate sed', 5, '2017-08-06 17:58:05'),
+(5, 9, '1995-11-11', 2, 0, 1, 'Aut ab eu minima sint earum architecto iure ad quod velit quas consequat Commodi culpa sint', 24, '2017-08-06 17:58:47'),
+(6, 9, '1999-11-11', 4, 0, 2, 'Consectetur non eu fugiat veritatis accusamus est lorem commodo neque earum fugiat doloremque accusantium et repellendus Eius omnis officia', 86, '2017-08-06 18:01:32'),
+(7, 9, '1995-11-11', 3, 0, 2, 'Rem ab voluptas qui anim ut quae laborum Fugiat', 72, '2017-08-06 18:01:54'),
+(8, 8, '1999-11-11', 5, 0, 3, 'Consectetur non eu fugiat veritatis accusamus est lorem commodo neque earum fugiat doloremque accusantium et repellendus Eius omnis officia', 86, '2017-08-06 18:01:32'),
+(9, 8, '1995-11-11', 5, 0, 3, 'Rem ab voluptas qui anim ut quae laborum Fugiat', 72, '2017-08-06 18:01:54'),
+(10, 8, '1995-11-11', 5, 0, 3, 'Elmo Carver', 1111, '2017-08-07 22:04:41'),
+(11, 8, '2016-11-11', 5, 0, 3, 'ád', 123123123123, '2017-08-07 22:05:02'),
+(12, 8, '1995-11-11', 5, 2, 2, '123', 111, '2017-08-08 21:07:59'),
+(13, 8, '1995-11-11', 2, 4, 1, '123', 123, '2017-08-08 21:11:13'),
+(14, 8, '1995-11-11', 2, NULL, 1, '12', 123, '2017-08-08 21:39:47');
 
 -- --------------------------------------------------------
 
@@ -73,7 +77,32 @@ INSERT INTO `bill_type` (`pk`, `activity_type`, `name`, `description`, `registra
 (1, 3, 'Đầu tư', 'Tiền đầu tư', '2017-08-07 15:19:22'),
 (2, 1, 'Bán ve chai', 'Thu tiền bán ve chai', '2017-08-06 09:43:42'),
 (3, 2, 'Mua vật liệu', 'Tiền mua vật liệu', '2017-08-06 09:44:27'),
-(4, 2, 'Mua nước', 'Tiền mua nước uống chơi', '2017-08-06 09:44:21');
+(4, 2, 'Mua nước', 'Tiền mua nước uống chơi', '2017-08-06 09:44:21'),
+(5, 2, 'Chi phí họat động', 'Chi phí duy trì hoạt động', '2017-08-08 13:07:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bill_type_2`
+--
+
+CREATE TABLE `bill_type_2` (
+  `pk` int(11) NOT NULL,
+  `bill_type` int(11) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `description` text CHARACTER SET utf8 NOT NULL,
+  `registration_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bill_type_2`
+--
+
+INSERT INTO `bill_type_2` (`pk`, `bill_type`, `name`, `description`, `registration_date`) VALUES
+(1, 5, 'Chi phí mua hàng', 'Chi phí mua hàng', '2017-08-08 20:10:32'),
+(2, 5, 'Chi phí thuê lao động', 'Chi phí thuê lao động', '2017-08-08 20:10:32'),
+(4, 2, 'Bán nhựa', 'Bán nhựa', '2017-08-08 20:10:32'),
+(5, 2, 'Bán sắt', 'Bán sắt', '2017-08-08 20:10:32');
 
 -- --------------------------------------------------------
 
@@ -125,6 +154,12 @@ ALTER TABLE `bill_type`
   ADD PRIMARY KEY (`pk`);
 
 --
+-- Indexes for table `bill_type_2`
+--
+ALTER TABLE `bill_type_2`
+  ADD PRIMARY KEY (`pk`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -138,11 +173,16 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `pk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `pk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `bill_type`
 --
 ALTER TABLE `bill_type`
+  MODIFY `pk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `bill_type_2`
+--
+ALTER TABLE `bill_type_2`
   MODIFY `pk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `user`
