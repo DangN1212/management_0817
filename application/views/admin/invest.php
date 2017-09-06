@@ -3,8 +3,8 @@
             <h4 class="center-align">Xem đầu tư</h4>
             <ul id="tabs-swipe-data" class="tabs">
                 <li class="tab col s3"><a href="#data-swipe-1">Thêm</a></li>
-                <li class="tab col s3"><a href="#data-swipe-2">Xem tất cả</a></li>
-                <li class="tab col s3"><a class="active" href="#data-swipe-3">Xem theo thời gian</a></li>
+                <li class="tab col s3"><a class="active" href="#data-swipe-2">Xem tất cả</a></li>
+                <li class="tab col s3"><a  href="#data-swipe-3">Xem theo thời gian</a></li>
             </ul>
             <div id="data-swipe-1" class="col s12">
                 <form action="" method="post">

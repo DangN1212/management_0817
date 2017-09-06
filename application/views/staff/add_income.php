@@ -9,7 +9,12 @@
                   <label id="lb_dateInput" for="dateInput">Thời gian</label>
             </div>
           </div>
-
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mode_edit</i><input name="nameClient" id="nameClient" type="text" class="validate" autocomplete="off" value="<?= $params["description"] ?>" required="true">
+              <label id="lb_description" for="nameClient">Tên người mua</label>
+            </div>
+          </div>
           <div class="row">
               <div class="input-field col s12">
               <i class="material-icons prefix">mode_edit</i>
@@ -87,7 +92,7 @@
          event.preventDefault();
          /* Act on the event */
          $.ajax({
-           url: '<?= base_url() ?>/home/ajax_getBillType2/'+billTypeSelector.val(),
+           url: '<?= base_url() ?>home/ajax_getBillType2/'+billTypeSelector.val(),
            type: 'GET',
            dataType: 'json',
            success:function(data){

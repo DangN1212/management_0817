@@ -11,7 +11,6 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$userType = $_SESSION["userData"]["type"];
-
 		switch ($userType) {
 			case 1:
 				redirect(base_url("admin"));

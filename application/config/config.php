@@ -22,7 +22,7 @@ error_reporting(0);
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://dev.revenue_management.net/';
+$config['base_url'] = 'http://dangnguyen.localhost/Huy/revenue_management/';
 
 /*
 |--------------------------------------------------------------------------

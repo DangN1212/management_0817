@@ -10,7 +10,7 @@
               <div class="row text_b">
                 <p class="col s2">Ngày</p>
                 <p class="col s2">Loại</p>
-                <p class="col s6">Chi tiết</p>
+                <p class="col s5">Chi tiết</p>
                 <p class="col s2">Giá</p>
               </div>
                 <?php
@@ -26,8 +26,9 @@
                         <div class="row">
                             <p class="col s2"><?= $value->dateInput ?></p>
                             <p title="<?= $value->bill_type_description ?><?php echo ($value->bill_type_2_description) ? " | ".$value->bill_type_2_description : "" ?>" class="col s2"><?= $value->bill_type_name ?><?php echo ($value->bill_type_2_name) ? " | ".$value->bill_type_2_name : "" ?></p>
-                            <p class="col s6"><?= $value->description ?></p>
+                            <p class="col s5"><?= $value->description ?></p>
                             <p class="col s2"><?= $value->value ?></p>
+                            <p class="col s1"> <a class="btn-floating btn-small waves-effect waves-light red" href="<?= base_url() ?>staff/add_outcome"><i class="material-icons">edit</i></a></p>
                         </div>
                         <?php
                     }
@@ -59,7 +60,7 @@
               <div class="row text_b">
                 <p class="col s2">Ngày</p>
                 <p class="col s2">Loại</p>
-                <p class="col s6">Chi tiết</p>
+                <p class="col s5">Chi tiết</p>
                 <p class="col s2">Giá</p>
               </div>
                 <?php
@@ -75,8 +76,9 @@
                     <div class="row">
                         <p class="col s2"><?= $value->dateInput ?></p>
                         <p title="<?= $value->bill_type_description ?><?php echo ($value->bill_type_2_description) ? " | ".$value->bill_type_2_description : "" ?>" class="col s2"><?= $value->bill_type_name ?><?php echo ($value->bill_type_2_name) ? " | ".$value->bill_type_2_name : "" ?></p>
-                        <p class="col s6"><?= $value->description ?></p>
+                        <p class="col s5"><?= $value->description ?></p>
                         <p class="col s2"><?= $value->value ?></p>
+                        <p class="col s1"> <a class="btn-floating btn-small waves-effect waves-light red" href="<?= base_url() ?>staff/add_outcome"><i class="material-icons">edit</i></a></p>
                     </div>
                         <?php
                     }

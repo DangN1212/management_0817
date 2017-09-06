@@ -28,6 +28,11 @@
                     <select id="bill_type_2" name="bill_type_2" class="select-02">
                     </select>
                 </div>
+                <div id="bill_type_2_content"  class="col push-s2 s10">
+                    <select id="bill_name" name="bill_name" class="select-02">
+                    <option value="0" disabled selected>Chọn tên hóa đơn</option>
+                    </select>
+                </div>
             </div>
           </div>
           <div class="row">
@@ -38,17 +43,29 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
+              <i class="material-icons prefix">mode_edit</i><input name="money" id="money" type="number" class="validate" autocomplete="off" required="true">
+              <label id="lb_description" for="money">Giá tiền</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mode_edit</i><input name="money02" id="money02" type="number" class="validate" autocomplete="off" required="true">
+              <label id="lb_description" for="money02">Tỷ giá</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
               <i class="material-icons prefix">mode_edit</i><input name="value" id="value" type="number" class="validate" value="<?= $params["value"] ?>" required="true">
-              <label id="lb_value" for="value">Đơn giá</label>
+              <label id="lb_value" for="value">Thành tiền</label>
             </div>
           </div>
           <div class="center-align">
-          <button class="btn waves-effect waves-light" type="reset" name="action">Xóa
+          <button class="btn_reset btn waves-effect waves-light" type="reset" name="action">Xóa
     <i class="material-icons right">send</i>
   </button>
-          <button class="btn waves-effect waves-light" type="submit" name="submit">Thêm
+          <button class="btn_submit btn waves-effect waves-light" type="submit">Thêm
     <i class="material-icons right">send</i>
-  </button>
+                  </button>
   </div>
     </form>
 
@@ -59,7 +76,8 @@
         var cleave = new Cleave('.dateInput', {
             date: true,
             datePattern: ['Y', 'm', 'd']
-        });
+        }),
+            btnSubmit = $('.btn_submit');
        $('select').material_select();
        isScroll = 0;
        <?php
@@ -85,7 +103,7 @@
          event.preventDefault();
          /* Act on the event */
          $.ajax({
-           url: '<?= base_url() ?>/home/ajax_getBillType2/'+billTypeSelector.val(),
+           url: '<?= base_url() ?>home/ajax_getBillType2/'+billTypeSelector.val(),
            type: 'GET',
            dataType: 'json',
            success:function(data){
@@ -94,7 +112,6 @@
               for (var i = 0; i < data.length; i++) {
                 optionData += '<option value="'+data[i].pk+'">'+data[i].name+'</option>';
               }
-              console.log(optionData);
               $("#bill_type_2").html(optionData);
               $("#bill_type_2").material_select();
               $("#bill_type_2_content").show();
