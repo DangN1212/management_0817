@@ -56,7 +56,7 @@
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">mode_edit</i><input name="value" id="value" type="number" class="validate" value="<?= $params["value"] ?>" required="true">
-              <label id="lb_value" for="value">Thành tiền</label>
+              <label id="lb_value" for="value">Thành tiền(Tỷ giá * Giá tiền)</label>
             </div>
           </div>
           <div class="center-align">
@@ -123,5 +123,10 @@
            }
          });
        });
+       $("#money,#money02").keyup(function(){
+        var total = $('#money').val()  * $('#money02').val();
+        $('#lb_value').addClass('active');
+        $('#value').val(total);
+    });
     });
 </script>

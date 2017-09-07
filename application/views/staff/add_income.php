@@ -71,8 +71,6 @@
         if ($error) {
             foreach ($error as $key => $value) {
                 ?>
-                console.log(isScroll);
-                    console.log(<?=$key?>);
                 if (isScroll === 0) {
 
                     $('html, body').animate({
@@ -101,7 +99,6 @@
               for (var i = 0; i < data.length; i++) {
                 optionData += '<option value="'+data[i].pk+'">'+data[i].name+'</option>';
               }
-              console.log(optionData);
               $("#bill_type_2").html(optionData);
               $("#bill_type_2").material_select();
               $("#bill_type_2_content").show();
